@@ -46,6 +46,9 @@ class Song
   # def self.create_by_name(name)
   #
   # end
+  def play_song
+    notes.each {|note| note.play}
+  end
 end
 # note = Note.new('f', 1.5)
 # Pry.start

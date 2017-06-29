@@ -3,19 +3,21 @@ class Note
   attr_accessor :song
   # attr_writer :song
   @@all = []
-  def initialize(name, duration)
+  def initialize(name, duration, song=nil)
     @name = name
     @duration = duration
-
+    @song = song
     @@all << self
   end
 
   def play
-    mp3 = Gosu::Sample.new()
+    file_name = Dir.pwd + "/lib/notes/" + @name + ".wav"
+    puts file_name
+    mp3 = Gosu::Sample.new(file_name)
     # Dir.pwd # "/Users/flatironschool/Dropbox/web-0626/04-song-app"
     # pass through the correct file
     playing = mp3.play
-    # sleep
+     sleep(duration)
     playing.stop
 
     # 1. play the note
